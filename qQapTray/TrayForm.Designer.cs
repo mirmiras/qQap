@@ -28,12 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.captureButton = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // captureButton
+            // 
+            this.captureButton.Location = new System.Drawing.Point(12, 12);
+            this.captureButton.Name = "captureButton";
+            this.captureButton.Size = new System.Drawing.Size(75, 23);
+            this.captureButton.TabIndex = 0;
+            this.captureButton.Text = "Capture Screen";
+            this.captureButton.UseVisualStyleBackColor = true;
+            this.captureButton.Click += new System.EventHandler(this.captureButton_Click);
+            // 
+            // TrayForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(189, 61);
+            this.Controls.Add(this.captureButton);
+            this.Name = "TrayForm";
+            this.Text = "qQap Tray";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button captureButton;
     }
 }
 
