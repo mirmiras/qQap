@@ -28,7 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrayForm));
             this.captureButton = new System.Windows.Forms.Button();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.toTrayCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // captureButton
@@ -41,21 +45,46 @@
             this.captureButton.UseVisualStyleBackColor = true;
             this.captureButton.Click += new System.EventHandler(this.captureButton_Click);
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon.BalloonTipText = "qQap minimized to tray";
+            this.notifyIcon.BalloonTipTitle = "qQap Tray";
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "qQap";
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
+            // 
+            // toTrayCheckBox
+            // 
+            this.toTrayCheckBox.AutoSize = true;
+            this.toTrayCheckBox.Location = new System.Drawing.Point(13, 43);
+            this.toTrayCheckBox.Name = "toTrayCheckBox";
+            this.toTrayCheckBox.Size = new System.Drawing.Size(106, 17);
+            this.toTrayCheckBox.TabIndex = 1;
+            this.toTrayCheckBox.Text = "Minimize To Tray";
+            this.toTrayCheckBox.UseVisualStyleBackColor = true;
+            // 
             // TrayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(189, 61);
+            this.ClientSize = new System.Drawing.Size(165, 66);
+            this.Controls.Add(this.toTrayCheckBox);
             this.Controls.Add(this.captureButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TrayForm";
             this.Text = "qQap Tray";
+            this.Resize += new System.EventHandler(this.TrayForm_Resize);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button captureButton;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.CheckBox toTrayCheckBox;
     }
 }
 
