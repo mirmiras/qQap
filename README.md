@@ -9,3 +9,6 @@ Functionality:
 - active window snapshots
 - window tracking snapshots - tracking window by it's handle
 - periodical snapshots i.e. every 10 sec
+
+#Adding to tray option
+Next step is to add configuration file to save/load cutomized settings
