@@ -39,5 +39,24 @@ namespace qQapTray
         {
             return $"testWindow{cntWindow:0000}.png";
         }
+
+        private void TrayForm_Resize(object sender, System.EventArgs e)
+        {
+            if (!toTrayCheckBox.Checked) return;
+            if (FormWindowState.Minimized == WindowState)
+            {
+                Hide();
+                notifyIcon.Visible = true;
+                notifyIcon.ShowBalloonTip(5);
+            }
+        }
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            notifyIcon.Visible = false;
+            Show();
+            WindowState = FormWindowState.Normal;
+
+        }
     }
 }
