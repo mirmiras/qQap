@@ -11,6 +11,8 @@ namespace qQapTray
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private int _cntFull;
         private int _cntWindow;
+        private QapSettings _qapSettings;
+
         public TrayForm()
         {
             InitializeComponent();
@@ -57,6 +59,22 @@ namespace qQapTray
             Show();
             WindowState = FormWindowState.Normal;
 
+        }
+
+        private void TrayForm_Load(object sender, System.EventArgs e)
+        {
+            _qapSettings = QapSettings.Load();
+            toTrayCheckBox.Checked = _qapSettings.MinimizeToTray;
+            startMinimizedCheckBox.Checked = _qapSettings.StartMinimized;
+            if (startMinimizedCheckBox.Checked)
+                WindowState = FormWindowState.Minimized;
+        }
+
+        private void TrayForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _qapSettings.MinimizeToTray = toTrayCheckBox.Checked;
+            _qapSettings.StartMinimized = startMinimizedCheckBox.Checked;
+            QapSettings.Save(_qapSettings);
         }
     }
 }

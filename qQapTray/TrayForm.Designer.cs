@@ -33,6 +33,7 @@
             this.captureButton = new System.Windows.Forms.Button();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.toTrayCheckBox = new System.Windows.Forms.CheckBox();
+            this.startMinimizedCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // captureButton
@@ -64,16 +65,29 @@
             this.toTrayCheckBox.Text = "Minimize To Tray";
             this.toTrayCheckBox.UseVisualStyleBackColor = true;
             // 
+            // startMinimizedCheckBox
+            // 
+            this.startMinimizedCheckBox.AutoSize = true;
+            this.startMinimizedCheckBox.Location = new System.Drawing.Point(13, 65);
+            this.startMinimizedCheckBox.Name = "startMinimizedCheckBox";
+            this.startMinimizedCheckBox.Size = new System.Drawing.Size(96, 17);
+            this.startMinimizedCheckBox.TabIndex = 2;
+            this.startMinimizedCheckBox.Text = "Start minimized";
+            this.startMinimizedCheckBox.UseVisualStyleBackColor = true;
+            // 
             // TrayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(165, 66);
+            this.ClientSize = new System.Drawing.Size(165, 94);
+            this.Controls.Add(this.startMinimizedCheckBox);
             this.Controls.Add(this.toTrayCheckBox);
             this.Controls.Add(this.captureButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TrayForm";
             this.Text = "qQap Tray";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TrayForm_FormClosed);
+            this.Load += new System.EventHandler(this.TrayForm_Load);
             this.Resize += new System.EventHandler(this.TrayForm_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -85,6 +99,7 @@
         private System.Windows.Forms.Button captureButton;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.CheckBox toTrayCheckBox;
+        private System.Windows.Forms.CheckBox startMinimizedCheckBox;
     }
 }
 
