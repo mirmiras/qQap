@@ -19,22 +19,6 @@ namespace QapTray
             _logger.Debug("Tray form initialization");
         }
 
-        private void captureButton_Click(object sender, System.EventArgs e)
-        {
-            Image image = ScreenCapture.CaptureDesktop();
-            if (image != null)
-            {
-                var captureFileName = GetCaptureFileName(_cntFull++);
-                _logger.Debug($"Saving full screen into: {captureFileName}");
-                image.Save(captureFileName, ImageFormat.Png);
-            }
-        }
-
-        private string GetCaptureFileName(int cntWindow)
-        {
-            return $"testWindow{cntWindow:0000}.png";
-        }
-
         private void TrayForm_Resize(object sender, System.EventArgs e)
         {
             if (!toTrayCheckBox.Checked) return;
@@ -70,7 +54,33 @@ namespace QapTray
             QapSettings.Save(_qapSettings);
         }
 
-        private void button1_Click(object sender, System.EventArgs e)
+        private void captureButton_Click(object sender, System.EventArgs e)
+        {
+            CaptureFullScreen();
+        }
+
+        private void CaptureFullScreen()
+        {
+            Image image = ScreenCapture.CaptureDesktop();
+            if (image != null)
+            {
+                var captureFileName = GetCaptureFileName(_cntFull++);
+                _logger.Debug($"Saving full screen into: {captureFileName}");
+                image.Save(captureFileName, ImageFormat.Png);
+            }
+        }
+
+        private string GetCaptureFileName(int cntWindow)
+        {
+            return $"testWindow{cntWindow:0000}.png";
+        }
+
+        private void activeWindowCaptureButton_Click(object sender, System.EventArgs e)
+        {
+            CaptureActiveWindow();
+        }
+
+        private void CaptureActiveWindow()
         {
             Bitmap bmp = ScreenCapture.CaptureActiveWindow();
             if (bmp != null)
@@ -79,6 +89,18 @@ namespace QapTray
                 _logger.Debug($"Saving active window into: {captureFileName}");
                 bmp.Save(captureFileName, ImageFormat.Png);
             }
+        }
+
+        private void captureCheckBox_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (captureCheckBox.Checked)
+                captureTimer.Interval = (int)captureTime.Value * 1000;
+            captureTimer.Enabled = captureCheckBox.Checked;
+        }
+
+        private void captureTimer_Tick(object sender, System.EventArgs e)
+        {
+            CaptureFullScreen();
         }
     }
 }
