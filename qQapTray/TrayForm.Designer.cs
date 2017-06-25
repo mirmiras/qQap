@@ -40,14 +40,15 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.captureTime = new System.Windows.Forms.NumericUpDown();
             this.captureCheckBox = new System.Windows.Forms.CheckBox();
             this.captureTimer = new System.Windows.Forms.Timer(this.components);
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.captureTime)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // captureButton
@@ -123,11 +124,9 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.checkBox2);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.captureTime);
             this.groupBox3.Controls.Add(this.captureCheckBox);
+            this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Location = new System.Drawing.Point(12, 103);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(316, 81);
@@ -138,7 +137,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(244, 47);
+            this.label2.Location = new System.Drawing.Point(84, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 4;
@@ -154,18 +153,9 @@
             this.checkBox2.Text = "Capture Active Window";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(171, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Capture every:";
-            // 
             // captureTime
             // 
-            this.captureTime.Location = new System.Drawing.Point(174, 45);
+            this.captureTime.Location = new System.Drawing.Point(14, 24);
             this.captureTime.Name = "captureTime";
             this.captureTime.Size = new System.Drawing.Size(64, 20);
             this.captureTime.TabIndex = 1;
@@ -190,6 +180,17 @@
             // 
             this.captureTimer.Tick += new System.EventHandler(this.captureTimer_Tick);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.captureTime);
+            this.groupBox4.Location = new System.Drawing.Point(160, 12);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(150, 60);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Capture every";
+            // 
             // TrayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,6 +211,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.captureTime)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -224,12 +227,12 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button activeWindowCaptureButton;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown captureTime;
         private System.Windows.Forms.CheckBox captureCheckBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Timer captureTimer;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }
 
