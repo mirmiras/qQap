@@ -1,11 +1,14 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace qQap
+namespace Qap
 {
     public class ScreenCapture
     {
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
         [DllImport("user32.dll")]
         private static extern IntPtr GetForegroundWindow();
 
@@ -55,7 +58,7 @@ namespace qQap
             }
             catch (Exception e)
             {
-
+                _logger.Error(e, "CaptureWindow failed!");
             }
             return result;
         }
