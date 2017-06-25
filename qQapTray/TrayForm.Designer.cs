@@ -38,17 +38,17 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.activeWindowCaptureButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.captureTime = new System.Windows.Forms.NumericUpDown();
+            this.captureActiveWindowCheckBox = new System.Windows.Forms.CheckBox();
             this.captureCheckBox = new System.Windows.Forms.CheckBox();
-            this.captureTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.captureTime = new System.Windows.Forms.NumericUpDown();
+            this.captureTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.captureTime)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.captureTime)).BeginInit();
             this.SuspendLayout();
             // 
             // captureButton
@@ -124,7 +124,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.checkBox2);
+            this.groupBox3.Controls.Add(this.captureActiveWindowCheckBox);
             this.groupBox3.Controls.Add(this.captureCheckBox);
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Location = new System.Drawing.Point(12, 103);
@@ -134,6 +134,38 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Auto Capture";
             // 
+            // captureActiveWindowCheckBox
+            // 
+            this.captureActiveWindowCheckBox.AutoSize = true;
+            this.captureActiveWindowCheckBox.Location = new System.Drawing.Point(16, 48);
+            this.captureActiveWindowCheckBox.Name = "captureActiveWindowCheckBox";
+            this.captureActiveWindowCheckBox.Size = new System.Drawing.Size(138, 17);
+            this.captureActiveWindowCheckBox.TabIndex = 3;
+            this.captureActiveWindowCheckBox.Text = "Capture Active Window";
+            this.captureActiveWindowCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // captureCheckBox
+            // 
+            this.captureCheckBox.AutoSize = true;
+            this.captureCheckBox.Location = new System.Drawing.Point(16, 20);
+            this.captureCheckBox.Name = "captureCheckBox";
+            this.captureCheckBox.Size = new System.Drawing.Size(113, 17);
+            this.captureCheckBox.TabIndex = 0;
+            this.captureCheckBox.Text = "Auto Caputre Start";
+            this.captureCheckBox.UseVisualStyleBackColor = true;
+            this.captureCheckBox.CheckedChanged += new System.EventHandler(this.captureCheckBox_CheckedChanged);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.captureTime);
+            this.groupBox4.Location = new System.Drawing.Point(160, 12);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(150, 60);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Capture every";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -142,16 +174,6 @@
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "seconds";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(16, 48);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(138, 17);
-            this.checkBox2.TabIndex = 3;
-            this.checkBox2.Text = "Capture Active Window";
-            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // captureTime
             // 
@@ -165,31 +187,9 @@
             0,
             0});
             // 
-            // captureCheckBox
-            // 
-            this.captureCheckBox.AutoSize = true;
-            this.captureCheckBox.Location = new System.Drawing.Point(16, 20);
-            this.captureCheckBox.Name = "captureCheckBox";
-            this.captureCheckBox.Size = new System.Drawing.Size(113, 17);
-            this.captureCheckBox.TabIndex = 0;
-            this.captureCheckBox.Text = "Auto Caputre Start";
-            this.captureCheckBox.UseVisualStyleBackColor = true;
-            this.captureCheckBox.CheckedChanged += new System.EventHandler(this.captureCheckBox_CheckedChanged);
-            // 
             // captureTimer
             // 
             this.captureTimer.Tick += new System.EventHandler(this.captureTimer_Tick);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.captureTime);
-            this.groupBox4.Location = new System.Drawing.Point(160, 12);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(150, 60);
-            this.groupBox4.TabIndex = 5;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Capture every";
             // 
             // TrayForm
             // 
@@ -210,9 +210,9 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.captureTime)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.captureTime)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -230,7 +230,7 @@
         private System.Windows.Forms.NumericUpDown captureTime;
         private System.Windows.Forms.CheckBox captureCheckBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox captureActiveWindowCheckBox;
         private System.Windows.Forms.Timer captureTimer;
         private System.Windows.Forms.GroupBox groupBox4;
     }
