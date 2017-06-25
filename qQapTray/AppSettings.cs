@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
 
-namespace qQapTray
+namespace QapTray
 {
     public class AppSettings<T> where T : new()
     {

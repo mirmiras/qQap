@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qQap", "qQap\qQap.csproj", "{B5FEAD71-81DA-45E4-853E-1B432BA1E4DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qap", "qQap\Qap.csproj", "{B5FEAD71-81DA-45E4-853E-1B432BA1E4DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qQapTray", "qQapTray\qQapTray.csproj", "{52BD4760-A153-4381-A2DD-62DB332CF344}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QapTray", "qQapTray\QapTray.csproj", "{52BD4760-A153-4381-A2DD-62DB332CF344}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

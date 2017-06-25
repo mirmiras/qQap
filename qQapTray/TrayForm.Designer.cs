@@ -1,4 +1,4 @@
-﻿namespace qQapTray
+﻿namespace QapTray
 {
     partial class TrayForm
     {

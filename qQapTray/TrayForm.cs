@@ -1,10 +1,10 @@
 ﻿using NLog;
-using qQap;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
+using Qap;
 
-namespace qQapTray
+namespace QapTray
 {
     public partial class TrayForm : Form
     {
