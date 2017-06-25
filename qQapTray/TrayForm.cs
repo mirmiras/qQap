@@ -100,7 +100,10 @@ namespace QapTray
 
         private void captureTimer_Tick(object sender, System.EventArgs e)
         {
-            CaptureFullScreen();
+            if (captureActiveWindowCheckBox.Checked)
+                CaptureActiveWindow();
+            else
+                CaptureFullScreen();
         }
     }
 }
