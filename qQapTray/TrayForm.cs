@@ -1,8 +1,8 @@
 ﻿using NLog;
+using Qap;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
-using Qap;
 
 namespace QapTray
 {
@@ -27,13 +27,6 @@ namespace QapTray
                 var captureFileName = GetCaptureFileName(_cntFull++);
                 _logger.Debug($"Saving full screen into: {captureFileName}");
                 image.Save(captureFileName, ImageFormat.Png);
-            }
-            Bitmap bmp = ScreenCapture.CaptureActiveWindow();
-            if (bmp != null)
-            {
-                var captureFileName = GetCaptureFileName(_cntWindow++);
-                _logger.Debug($"Saving active window into: {captureFileName}");
-                bmp.Save(captureFileName, ImageFormat.Png);
             }
         }
 
@@ -75,6 +68,17 @@ namespace QapTray
             _qapSettings.MinimizeToTray = toTrayCheckBox.Checked;
             _qapSettings.StartMinimized = startMinimizedCheckBox.Checked;
             QapSettings.Save(_qapSettings);
+        }
+
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+            Bitmap bmp = ScreenCapture.CaptureActiveWindow();
+            if (bmp != null)
+            {
+                var captureFileName = GetCaptureFileName(_cntWindow++);
+                _logger.Debug($"Saving active window into: {captureFileName}");
+                bmp.Save(captureFileName, ImageFormat.Png);
+            }
         }
     }
 }
