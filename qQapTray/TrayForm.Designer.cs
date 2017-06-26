@@ -42,13 +42,13 @@
             this.captureCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.captureTime = new System.Windows.Forms.NumericUpDown();
+            this.capturePeriodInSeconds = new System.Windows.Forms.NumericUpDown();
             this.captureTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.captureTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.capturePeriodInSeconds)).BeginInit();
             this.SuspendLayout();
             // 
             // captureButton
@@ -158,7 +158,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.captureTime);
+            this.groupBox4.Controls.Add(this.capturePeriodInSeconds);
             this.groupBox4.Location = new System.Drawing.Point(160, 12);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(150, 60);
@@ -175,13 +175,13 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "seconds";
             // 
-            // captureTime
+            // capturePeriodInSeconds
             // 
-            this.captureTime.Location = new System.Drawing.Point(14, 24);
-            this.captureTime.Name = "captureTime";
-            this.captureTime.Size = new System.Drawing.Size(64, 20);
-            this.captureTime.TabIndex = 1;
-            this.captureTime.Value = new decimal(new int[] {
+            this.capturePeriodInSeconds.Location = new System.Drawing.Point(14, 24);
+            this.capturePeriodInSeconds.Name = "capturePeriodInSeconds";
+            this.capturePeriodInSeconds.Size = new System.Drawing.Size(64, 20);
+            this.capturePeriodInSeconds.TabIndex = 1;
+            this.capturePeriodInSeconds.Value = new decimal(new int[] {
             10,
             0,
             0,
@@ -212,7 +212,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.captureTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.capturePeriodInSeconds)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -227,7 +227,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button activeWindowCaptureButton;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.NumericUpDown captureTime;
+        private System.Windows.Forms.NumericUpDown capturePeriodInSeconds;
         private System.Windows.Forms.CheckBox captureCheckBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox captureActiveWindowCheckBox;
