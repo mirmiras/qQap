@@ -9,9 +9,12 @@ namespace QapTray
     public partial class TrayForm : Form
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
-        private int _cntFull;
-        private int _cntWindow;
+        private int _fullScreenSaveCounter;
+        private int _windowSaveCounter;
         private QapSettings _qapSettings;
+        const int MaxScreenShotsNumber = 10000;
+        const string FullScreenPrefix = "FullScreen";
+        const string WindowPrefix = "Window";
 
         public TrayForm()
         {
@@ -43,6 +46,9 @@ namespace QapTray
             _qapSettings = QapSettings.Load();
             toTrayCheckBox.Checked = _qapSettings.MinimizeToTray;
             startMinimizedCheckBox.Checked = _qapSettings.StartMinimized;
+            _fullScreenSaveCounter = _qapSettings.FullScreenSaveCounter;
+            _windowSaveCounter = _qapSettings.WindowSaveCounter;
+            capturePeriodInSeconds.Value = _qapSettings.CapturePeriod;
             if (startMinimizedCheckBox.Checked)
                 WindowState = FormWindowState.Minimized;
         }
@@ -51,6 +57,7 @@ namespace QapTray
         {
             _qapSettings.MinimizeToTray = toTrayCheckBox.Checked;
             _qapSettings.StartMinimized = startMinimizedCheckBox.Checked;
+            _qapSettings.CapturePeriod = (int)capturePeriodInSeconds.Value;
             QapSettings.Save(_qapSettings);
         }
 
@@ -64,15 +71,37 @@ namespace QapTray
             Image image = ScreenCapture.CaptureDesktop();
             if (image != null)
             {
-                var captureFileName = GetCaptureFileName(_cntFull++);
+                var captureFileName = GetCaptureFileName(true);
                 _logger.Debug($"Saving full screen into: {captureFileName}");
                 image.Save(captureFileName, ImageFormat.Png);
             }
         }
 
-        private string GetCaptureFileName(int cntWindow)
+        private string GetCaptureFileName(string filePrefix, int cntWindow)
         {
-            return $"testWindow{cntWindow:0000}.png";
+            return $"{filePrefix}{cntWindow:0000}.png";
+        }
+
+        private string GetCaptureFileName(bool fullScreen)
+        {
+            string filePrefix = fullScreen ? FullScreenPrefix : WindowPrefix;
+            int counter;
+            if (fullScreen)
+            {
+                counter = _qapSettings.FullScreenSaveCounter = GetNextNumber(ref _fullScreenSaveCounter);
+            }
+            else
+            {
+                counter = _qapSettings.WindowSaveCounter = GetNextNumber(ref _windowSaveCounter);
+            }
+            return GetCaptureFileName(filePrefix, counter);
+        }
+
+        private int GetNextNumber(ref int fullScreenSaveCounter)
+        {
+            if (fullScreenSaveCounter + 1 > MaxScreenShotsNumber)
+                fullScreenSaveCounter = 0;
+            return fullScreenSaveCounter++;
         }
 
         private void activeWindowCaptureButton_Click(object sender, System.EventArgs e)
@@ -85,7 +114,7 @@ namespace QapTray
             Bitmap bmp = ScreenCapture.CaptureActiveWindow();
             if (bmp != null)
             {
-                var captureFileName = GetCaptureFileName(_cntWindow++);
+                var captureFileName = GetCaptureFileName(false);
                 _logger.Debug($"Saving active window into: {captureFileName}");
                 bmp.Save(captureFileName, ImageFormat.Png);
             }
@@ -94,7 +123,7 @@ namespace QapTray
         private void captureCheckBox_CheckedChanged(object sender, System.EventArgs e)
         {
             if (captureCheckBox.Checked)
-                captureTimer.Interval = (int)captureTime.Value * 1000;
+                captureTimer.Interval = (int)capturePeriodInSeconds.Value * 1000;
             captureTimer.Enabled = captureCheckBox.Checked;
         }
 
