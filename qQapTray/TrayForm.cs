@@ -9,10 +9,7 @@ namespace QapTray
     public partial class TrayForm : Form
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
-        private int _fullScreenSaveCounter;
-        private int _windowSaveCounter;
         private QapSettings _qapSettings;
-        const int MaxScreenShotsNumber = 10000;
         const string FullScreenPrefix = "FullScreen";
         const string WindowPrefix = "Window";
 
@@ -46,8 +43,6 @@ namespace QapTray
             _qapSettings = QapSettings.Load();
             toTrayCheckBox.Checked = _qapSettings.MinimizeToTray;
             startMinimizedCheckBox.Checked = _qapSettings.StartMinimized;
-            _fullScreenSaveCounter = _qapSettings.FullScreenSaveCounter;
-            _windowSaveCounter = _qapSettings.WindowSaveCounter;
             capturePeriodInSeconds.Value = _qapSettings.CapturePeriod;
             if (startMinimizedCheckBox.Checked)
                 WindowState = FormWindowState.Minimized;
@@ -85,23 +80,8 @@ namespace QapTray
         private string GetCaptureFileName(bool fullScreen)
         {
             string filePrefix = fullScreen ? FullScreenPrefix : WindowPrefix;
-            int counter;
-            if (fullScreen)
-            {
-                counter = _qapSettings.FullScreenSaveCounter = GetNextNumber(ref _fullScreenSaveCounter);
-            }
-            else
-            {
-                counter = _qapSettings.WindowSaveCounter = GetNextNumber(ref _windowSaveCounter);
-            }
+            var counter = fullScreen ? _qapSettings.IncrementFullScreenSaveCounter() : _qapSettings.IncrementWindowSaveCounter();
             return GetCaptureFileName(filePrefix, counter);
-        }
-
-        private int GetNextNumber(ref int fullScreenSaveCounter)
-        {
-            if (fullScreenSaveCounter + 1 > MaxScreenShotsNumber)
-                fullScreenSaveCounter = 0;
-            return fullScreenSaveCounter++;
         }
 
         private void activeWindowCaptureButton_Click(object sender, System.EventArgs e)
