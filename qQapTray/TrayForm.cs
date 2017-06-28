@@ -8,10 +8,11 @@ namespace QapTray
 {
     public partial class TrayForm : Form
     {
-        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
-        private QapSettings _qapSettings;
         const string FullScreenPrefix = "FullScreen";
         const string WindowPrefix = "Window";
+
+        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        private QapSettings _qapSettings;
 
         public TrayForm()
         {
@@ -44,6 +45,7 @@ namespace QapTray
             toTrayCheckBox.Checked = _qapSettings.MinimizeToTray;
             startMinimizedCheckBox.Checked = _qapSettings.StartMinimized;
             capturePeriodInSeconds.Value = _qapSettings.CapturePeriod;
+            UpdateMode();
             if (startMinimizedCheckBox.Checked)
                 WindowState = FormWindowState.Minimized;
         }
@@ -58,7 +60,14 @@ namespace QapTray
 
         private void captureButton_Click(object sender, System.EventArgs e)
         {
-            CaptureFullScreen();
+            if (captureActiveWindowCheckBox.Checked)
+            {
+                CaptureActiveWindow();
+            }
+            else
+            {
+                CaptureFullScreen();
+            }
         }
 
         private void CaptureFullScreen()
@@ -86,7 +95,7 @@ namespace QapTray
 
         private void activeWindowCaptureButton_Click(object sender, System.EventArgs e)
         {
-            CaptureActiveWindow();
+
         }
 
         private void CaptureActiveWindow()
@@ -102,9 +111,6 @@ namespace QapTray
 
         private void captureCheckBox_CheckedChanged(object sender, System.EventArgs e)
         {
-            if (captureCheckBox.Checked)
-                captureTimer.Interval = (int)capturePeriodInSeconds.Value * 1000;
-            captureTimer.Enabled = captureCheckBox.Checked;
         }
 
         private void captureTimer_Tick(object sender, System.EventArgs e)
@@ -113,6 +119,35 @@ namespace QapTray
                 CaptureActiveWindow();
             else
                 CaptureFullScreen();
+        }
+
+        private void autoRecordButton_Click(object sender, System.EventArgs e)
+        {
+            if (!captureTimer.Enabled)
+            {
+                captureTimer.Interval = (int)capturePeriodInSeconds.Value * 1000;
+                autoRecordButton.Text = "Stop AutoRecord";
+                autoRecordButton.ForeColor = Color.Blue;
+            }
+            else
+            {
+                autoRecordButton.Text = "Start AutoRecord";
+                autoRecordButton.ForeColor = Color.Red;
+            }
+            captureTimer.Enabled = !captureTimer.Enabled;
+        }
+
+        private void captureActiveWindowCheckBox_CheckedChanged(object sender, System.EventArgs e)
+        {
+            UpdateMode();
+        }
+
+        private void UpdateMode()
+        {
+            if (captureActiveWindowCheckBox.Checked)
+                statusStrip.Items[0].Text = "ActiveWindow";
+            else
+                statusStrip.Items[0].Text = "FullScreen";
         }
     }
 }
