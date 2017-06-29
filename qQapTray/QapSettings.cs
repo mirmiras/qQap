@@ -9,6 +9,7 @@
         public int FullScreenSaveCounter { get; set; }
         public int WindowSaveCounter { get; set; }
         public int CapturePeriod { get; set; }
+        public bool CaptureActiveWindow { get; set; }
 
         public QapSettings()
         {

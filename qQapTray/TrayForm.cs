@@ -10,6 +10,8 @@ namespace QapTray
     {
         const string FullScreenPrefix = "FullScreen";
         const string WindowPrefix = "Window";
+        private const int MODE_INDEX = 0;
+        private const int FILE_STATUS_INDEX = 1;
 
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private QapSettings _qapSettings;
@@ -45,7 +47,9 @@ namespace QapTray
             toTrayCheckBox.Checked = _qapSettings.MinimizeToTray;
             startMinimizedCheckBox.Checked = _qapSettings.StartMinimized;
             capturePeriodInSeconds.Value = _qapSettings.CapturePeriod;
-            UpdateMode();
+            captureActiveWindowCheckBox.Checked = _qapSettings.CaptureActiveWindow;
+            UpdateModeStatus(captureActiveWindowCheckBox.Checked);
+            UpdateFileStatus();
             if (startMinimizedCheckBox.Checked)
                 WindowState = FormWindowState.Minimized;
         }
@@ -55,6 +59,7 @@ namespace QapTray
             _qapSettings.MinimizeToTray = toTrayCheckBox.Checked;
             _qapSettings.StartMinimized = startMinimizedCheckBox.Checked;
             _qapSettings.CapturePeriod = (int)capturePeriodInSeconds.Value;
+            _qapSettings.CaptureActiveWindow = captureActiveWindowCheckBox.Checked;
             QapSettings.Save(_qapSettings);
         }
 
@@ -77,6 +82,7 @@ namespace QapTray
             {
                 var captureFileName = GetCaptureFileName(true);
                 _logger.Debug($"Saving full screen into: {captureFileName}");
+                UpdateFileStatus(captureFileName);
                 image.Save(captureFileName, ImageFormat.Png);
             }
         }
@@ -93,11 +99,6 @@ namespace QapTray
             return GetCaptureFileName(filePrefix, counter);
         }
 
-        private void activeWindowCaptureButton_Click(object sender, System.EventArgs e)
-        {
-
-        }
-
         private void CaptureActiveWindow()
         {
             Bitmap bmp = ScreenCapture.CaptureActiveWindow();
@@ -105,13 +106,11 @@ namespace QapTray
             {
                 var captureFileName = GetCaptureFileName(false);
                 _logger.Debug($"Saving active window into: {captureFileName}");
+                UpdateFileStatus(captureFileName);
                 bmp.Save(captureFileName, ImageFormat.Png);
             }
         }
 
-        private void captureCheckBox_CheckedChanged(object sender, System.EventArgs e)
-        {
-        }
 
         private void captureTimer_Tick(object sender, System.EventArgs e)
         {
@@ -139,15 +138,20 @@ namespace QapTray
 
         private void captureActiveWindowCheckBox_CheckedChanged(object sender, System.EventArgs e)
         {
-            UpdateMode();
+            UpdateModeStatus(captureActiveWindowCheckBox.Checked);
         }
 
-        private void UpdateMode()
+
+        private void UpdateModeStatus(bool activeWindow)
         {
-            if (captureActiveWindowCheckBox.Checked)
-                statusStrip.Items[0].Text = "ActiveWindow";
-            else
-                statusStrip.Items[0].Text = "FullScreen";
+            var mode = activeWindow ? "ActiveWindow" : "FullScreen";
+            statusStrip.Items[0].Text = $@"Mode: {mode} | ";
         }
+
+        private void UpdateFileStatus(string captureFileName = "")
+        {
+            statusStrip.Items[FILE_STATUS_INDEX].Text = $"File: {captureFileName}";
+        }
+
     }
 }

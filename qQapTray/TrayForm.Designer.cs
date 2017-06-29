@@ -35,18 +35,18 @@
             this.toTrayCheckBox = new System.Windows.Forms.CheckBox();
             this.startMinimizedCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.captureActiveWindowCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.captureActiveWindowCheckBox = new System.Windows.Forms.CheckBox();
+            this.autoRecordButton = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.capturePeriodInSeconds = new System.Windows.Forms.NumericUpDown();
             this.captureTimer = new System.Windows.Forms.Timer(this.components);
-            this.autoRecordButton = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -106,6 +106,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Options";
             // 
+            // captureActiveWindowCheckBox
+            // 
+            this.captureActiveWindowCheckBox.AutoSize = true;
+            this.captureActiveWindowCheckBox.Location = new System.Drawing.Point(14, 16);
+            this.captureActiveWindowCheckBox.Name = "captureActiveWindowCheckBox";
+            this.captureActiveWindowCheckBox.Size = new System.Drawing.Size(138, 17);
+            this.captureActiveWindowCheckBox.TabIndex = 3;
+            this.captureActiveWindowCheckBox.Text = "Capture Active Window";
+            this.captureActiveWindowCheckBox.UseVisualStyleBackColor = true;
+            this.captureActiveWindowCheckBox.CheckedChanged += new System.EventHandler(this.captureActiveWindowCheckBox_CheckedChanged);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.captureButton);
@@ -127,16 +138,17 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Auto Capture";
             // 
-            // captureActiveWindowCheckBox
+            // autoRecordButton
             // 
-            this.captureActiveWindowCheckBox.AutoSize = true;
-            this.captureActiveWindowCheckBox.Location = new System.Drawing.Point(14, 16);
-            this.captureActiveWindowCheckBox.Name = "captureActiveWindowCheckBox";
-            this.captureActiveWindowCheckBox.Size = new System.Drawing.Size(138, 17);
-            this.captureActiveWindowCheckBox.TabIndex = 3;
-            this.captureActiveWindowCheckBox.Text = "Capture Active Window";
-            this.captureActiveWindowCheckBox.UseVisualStyleBackColor = true;
-            this.captureActiveWindowCheckBox.CheckedChanged += new System.EventHandler(this.captureActiveWindowCheckBox_CheckedChanged);
+            this.autoRecordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.autoRecordButton.ForeColor = System.Drawing.Color.Red;
+            this.autoRecordButton.Location = new System.Drawing.Point(16, 29);
+            this.autoRecordButton.Name = "autoRecordButton";
+            this.autoRecordButton.Size = new System.Drawing.Size(114, 23);
+            this.autoRecordButton.TabIndex = 2;
+            this.autoRecordButton.Text = "Start AutoRecord";
+            this.autoRecordButton.UseVisualStyleBackColor = true;
+            this.autoRecordButton.Click += new System.EventHandler(this.autoRecordButton_Click);
             // 
             // groupBox4
             // 
@@ -174,18 +186,6 @@
             // 
             this.captureTimer.Tick += new System.EventHandler(this.captureTimer_Tick);
             // 
-            // autoRecordButton
-            // 
-            this.autoRecordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.autoRecordButton.ForeColor = System.Drawing.Color.Red;
-            this.autoRecordButton.Location = new System.Drawing.Point(16, 29);
-            this.autoRecordButton.Name = "autoRecordButton";
-            this.autoRecordButton.Size = new System.Drawing.Size(114, 23);
-            this.autoRecordButton.TabIndex = 2;
-            this.autoRecordButton.Text = "Start AutoRecord";
-            this.autoRecordButton.UseVisualStyleBackColor = true;
-            this.autoRecordButton.Click += new System.EventHandler(this.autoRecordButton_Click);
-            // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -196,15 +196,6 @@
             this.statusStrip.Size = new System.Drawing.Size(343, 22);
             this.statusStrip.TabIndex = 6;
             this.statusStrip.Text = "statusStrip1";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Location = new System.Drawing.Point(5, 1);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(335, 189);
-            this.groupBox5.TabIndex = 7;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "groupBox5";
             // 
             // toolStripStatusLabel1
             // 
@@ -218,6 +209,14 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(53, 17);
             this.toolStripStatusLabel2.Text = "FileSaved";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Location = new System.Drawing.Point(5, 1);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(335, 189);
+            this.groupBox5.TabIndex = 7;
+            this.groupBox5.TabStop = false;
+            // 
             // TrayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,7 +229,7 @@
             this.Controls.Add(this.groupBox5);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TrayForm";
-            this.Text = "qQap Tray";
+            this.Text = "Qap";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TrayForm_FormClosed);
             this.Load += new System.EventHandler(this.TrayForm_Load);
             this.Resize += new System.EventHandler(this.TrayForm_Resize);
