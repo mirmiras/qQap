@@ -9,12 +9,13 @@ namespace QapTray
     public partial class TrayForm : Form
     {
         const string FullScreenPrefix = "FullScreen";
-        const string WindowPrefix = "Window";
+        const string ActiveWindowPrefix = "ActiveWindow";
         private const int MODE_INDEX = 0;
         private const int FILE_STATUS_INDEX = 1;
 
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private QapSettings _qapSettings;
+        private AudioRecorder _audioRecorder = new AudioRecorder();
 
         public TrayForm()
         {
@@ -94,7 +95,7 @@ namespace QapTray
 
         private string GetCaptureFileName(bool fullScreen)
         {
-            string filePrefix = fullScreen ? FullScreenPrefix : WindowPrefix;
+            string filePrefix = fullScreen ? FullScreenPrefix : ActiveWindowPrefix;
             var counter = fullScreen ? _qapSettings.IncrementFullScreenSaveCounter() : _qapSettings.IncrementWindowSaveCounter();
             return GetCaptureFileName(filePrefix, counter);
         }
@@ -144,8 +145,8 @@ namespace QapTray
 
         private void UpdateModeStatus(bool activeWindow)
         {
-            var mode = activeWindow ? "ActiveWindow" : "FullScreen";
-            statusStrip.Items[0].Text = $@"Mode: {mode} | ";
+            var mode = activeWindow ? ActiveWindowPrefix : FullScreenPrefix;
+            statusStrip.Items[MODE_INDEX].Text = $@"Mode: {mode} | ";
         }
 
         private void UpdateFileStatus(string captureFileName = "")
@@ -153,5 +154,19 @@ namespace QapTray
             statusStrip.Items[FILE_STATUS_INDEX].Text = $"File: {captureFileName}";
         }
 
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+            _audioRecorder.Start();
+        }
+
+        private void button2_Click(object sender, System.EventArgs e)
+        {
+            _audioRecorder.Stop();
+        }
+
+        // TODO: Fix file name logging issue
+        // TODO: Add auto capture option when app starts 
+        // TODO: Start in tray option
+        // TODO: Add audio recording
     }
 }
