@@ -164,9 +164,5 @@ namespace QapTray
             _audioRecorder.Stop();
         }
 
-        // TODO: Fix file name logging issue
-        // TODO: Add auto capture option when app starts 
-        // TODO: Start in tray option
-        // TODO: Add audio recording
     }
 }
