@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioRecorder.cs" />
+    <Compile Include="ProcessStartTimeLayoutRenderer.cs" />
     <Compile Include="ScreenCapture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
