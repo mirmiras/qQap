@@ -10,17 +10,16 @@ namespace QapTray
     {
         const string FullScreenPrefix = "FullScreen";
         const string ActiveWindowPrefix = "ActiveWindow";
-        private const int MODE_INDEX = 0;
-        private const int FILE_STATUS_INDEX = 1;
+        private const int ModeIndex = 0;
+        private const int FileStatusIndex = 1;
 
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private QapSettings _qapSettings;
-        private AudioRecorder _audioRecorder = new AudioRecorder();
+        private readonly AudioRecorder _audioRecorder = new AudioRecorder();
 
         public TrayForm()
         {
             InitializeComponent();
-            _logger.Debug("Tray form initialization");
         }
 
         private void TrayForm_Resize(object sender, System.EventArgs e)
@@ -146,12 +145,12 @@ namespace QapTray
         private void UpdateModeStatus(bool activeWindow)
         {
             var mode = activeWindow ? ActiveWindowPrefix : FullScreenPrefix;
-            statusStrip.Items[MODE_INDEX].Text = $@"Mode: {mode} | ";
+            statusStrip.Items[ModeIndex].Text = $@"Mode: {mode} | ";
         }
 
         private void UpdateFileStatus(string captureFileName = "")
         {
-            statusStrip.Items[FILE_STATUS_INDEX].Text = $"File: {captureFileName}";
+            statusStrip.Items[FileStatusIndex].Text = $"File: {captureFileName}";
         }
 
         private void button1_Click(object sender, System.EventArgs e)
