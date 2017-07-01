@@ -94,8 +94,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\qQap\Qap.csproj">
-      <Project>{B5FEAD71-81DA-45E4-853E-1B432BA1E4DA}</Project>
+    <ProjectReference Include="..\Qap\Qap.csproj">
+      <Project>{b5fead71-81da-45e4-853e-1b432ba1e4da}</Project>
       <Name>Qap</Name>
     </ProjectReference>
   </ItemGroup>
