@@ -51,7 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppSettings.cs" />
     <Compile Include="QapSettings.cs" />
     <Compile Include="TrayForm.cs">
       <SubType>Form</SubType>
@@ -94,6 +93,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\QapShared\QapShared.csproj">
+      <Project>{6361348E-9B46-4E3E-93E0-8D7847F5699D}</Project>
+      <Name>QapShared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Qap\Qap.csproj">
       <Project>{b5fead71-81da-45e4-853e-1b432ba1e4da}</Project>
       <Name>Qap</Name>

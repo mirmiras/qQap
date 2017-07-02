@@ -2,6 +2,7 @@
 using Qap;
 using System;
 using System.Windows.Forms;
+using QapShared;
 
 namespace QapTray
 {

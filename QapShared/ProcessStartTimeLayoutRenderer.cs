@@ -2,7 +2,7 @@
 using NLog.LayoutRenderers;
 using System.Diagnostics;
 
-namespace Qap
+namespace QapShared
 {
     [LayoutRenderer("process_start_time")]
     public class ProcessStartTimeLayoutRenderer : DateLayoutRenderer

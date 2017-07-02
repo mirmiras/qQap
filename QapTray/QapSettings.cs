@@ -1,4 +1,6 @@
-﻿namespace QapTray
+﻿using QapShared;
+
+namespace QapTray
 {
     class QapSettings : AppSettings<QapSettings>
     {
