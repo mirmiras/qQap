@@ -10,6 +10,7 @@ Functionality:
 - window tracking snapshots - tracking window by it's handle
 - periodical snapshots i.e. every 10 sec
 - audio recording - you can record snapshots and audio from ie. webinars
+- Client/Server functionality - to share screen and audio
 
 TODO:
 1. Add auto capture option when app starts 
@@ -17,3 +18,4 @@ TODO:
 3. Add audio recording options
 4. Add MP3 format
 5. Window by handler tracking
+6. Add Client/Server functionality - to share screen and audio
