@@ -16,3 +16,4 @@ TODO:
 2. Start in tray option
 3. Add audio recording options
 4. Add MP3 format
+5. Window by handler tracking

@@ -12,6 +12,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qap", "Qap\Qap.csproj", "{B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QapTray", "QapTray\QapTray.csproj", "{52BD4760-A153-4381-A2DD-62DB332CF344}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QapServer", "QapServer\QapServer.csproj", "{79C68E34-4431-4E42-A54B-60FFB9A7256C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QapClient", "QapClient\QapClient.csproj", "{64F5B9BD-07CF-4A05-A851-02B2322BF5B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +30,14 @@ Global
 		{52BD4760-A153-4381-A2DD-62DB332CF344}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52BD4760-A153-4381-A2DD-62DB332CF344}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52BD4760-A153-4381-A2DD-62DB332CF344}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79C68E34-4431-4E42-A54B-60FFB9A7256C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79C68E34-4431-4E42-A54B-60FFB9A7256C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79C68E34-4431-4E42-A54B-60FFB9A7256C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79C68E34-4431-4E42-A54B-60FFB9A7256C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64F5B9BD-07CF-4A05-A851-02B2322BF5B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64F5B9BD-07CF-4A05-A851-02B2322BF5B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64F5B9BD-07CF-4A05-A851-02B2322BF5B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64F5B9BD-07CF-4A05-A851-02B2322BF5B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
