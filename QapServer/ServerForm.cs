@@ -21,10 +21,21 @@ namespace QapServer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _listenSocket = AweSock.TcpListen(Helper.DefaultServerPort);
+            portTextBox.Text = Helper.DefaultServerPort.ToString();
+            StartServer(int.Parse(portTextBox.Text));
+        }
+
+        private void StartServer(int serverPort)
+        {
+            if (_listenSocket != null)
+            {
+                _listenSocket.Close();
+                _listenSocket = null;
+            }
+            _listenSocket = AweSock.TcpListen(serverPort);
             //Non-blocking mode
             AweSock.TcpAccept(_listenSocket, SocketCommunicationTypes.NonBlocking, AcceptClient);
-            _logger.Info($"Listening on port: {Helper.DefaultServerPort}");
+            _logger.Info($"Listening on port: {serverPort}");
         }
 
         Socket AcceptClient(ISocket iSocket, Exception exception)
@@ -34,6 +45,11 @@ namespace QapServer
                 return null;
 
             return iSocket.GetSocket();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StartServer(int.Parse(portTextBox.Text));
         }
     }
 }

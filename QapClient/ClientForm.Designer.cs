@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
+            this.ipTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.portTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -41,22 +45,63 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // ipTextBox
+            // 
+            this.ipTextBox.Location = new System.Drawing.Point(58, 42);
+            this.ipTextBox.Name = "ipTextBox";
+            this.ipTextBox.Size = new System.Drawing.Size(100, 20);
+            this.ipTextBox.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "IP";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 84);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Port";
+            // 
+            // portTextBox
+            // 
+            this.portTextBox.Location = new System.Drawing.Point(58, 84);
+            this.portTextBox.Name = "portTextBox";
+            this.portTextBox.Size = new System.Drawing.Size(100, 20);
+            this.portTextBox.TabIndex = 5;
+            // 
             // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 273);
+            this.Controls.Add(this.portTextBox);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ipTextBox);
             this.Controls.Add(this.button1);
             this.Name = "ClientForm";
             this.Text = "Qap Client";
             this.Load += new System.EventHandler(this.ClientForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox ipTextBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox portTextBox;
     }
 }
 

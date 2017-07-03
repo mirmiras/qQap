@@ -16,14 +16,15 @@ namespace QapClient
 
         private void ClientForm_Load(object sender, System.EventArgs e)
         {
-
+            ipTextBox.Text = Helper.DefaultIp;
+            portTextBox.Text = Helper.DefaultServerPort.ToString();
         }
 
         private void button1_Click(object sender, System.EventArgs e)
         {
             if (_serverSocket != null)
                 _serverSocket.Close();
-            _serverSocket = AweSock.TcpConnect("127.0.0.1", Helper.DefaultServerPort);
+            _serverSocket = AweSock.TcpConnect(ipTextBox.Text, int.Parse(portTextBox.Text));
         }
     }
 }
