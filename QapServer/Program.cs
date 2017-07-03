@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using NLog.LayoutRenderers;
+using QapShared;
+using System;
 using System.Windows.Forms;
 
 namespace QapServer
@@ -14,9 +13,10 @@ namespace QapServer
         [STAThread]
         static void Main()
         {
+            LayoutRenderer.Register<ProcessStartTimeLayoutRenderer>("process_start_time");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new ServerForm());
         }
     }
 }

@@ -253,7 +253,7 @@
             this.Controls.Add(this.groupBox5);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TrayForm";
-            this.Text = "Qap";
+            this.Text = "Qap Tray";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TrayForm_FormClosed);
             this.Load += new System.EventHandler(this.TrayForm_Load);
             this.Resize += new System.EventHandler(this.TrayForm_Resize);
