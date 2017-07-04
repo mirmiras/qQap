@@ -14,7 +14,7 @@ Functionality:
 
 TODO:
 1. Add auto capture option when app starts 
-2. Start in tray option
+2. Start in tray option - change from start minimised
 3. Add audio recording options
 4. Add MP3 format
 5. Window by handler tracking
