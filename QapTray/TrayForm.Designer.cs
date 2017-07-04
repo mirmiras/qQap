@@ -49,12 +49,15 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.capturePeriodInSeconds)).BeginInit();
             this.statusStrip.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // captureButton
@@ -193,7 +196,7 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
-            this.statusStrip.Location = new System.Drawing.Point(0, 258);
+            this.statusStrip.Location = new System.Drawing.Point(0, 261);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(343, 22);
             this.statusStrip.TabIndex = 6;
@@ -213,15 +216,16 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.groupBox6);
             this.groupBox5.Location = new System.Drawing.Point(5, 1);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(335, 189);
+            this.groupBox5.Size = new System.Drawing.Size(335, 254);
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(13, 212);
+            this.button1.Location = new System.Drawing.Point(30, 28);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(113, 23);
             this.button1.TabIndex = 1;
@@ -231,7 +235,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(142, 212);
+            this.button2.Location = new System.Drawing.Point(159, 28);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 23);
             this.button2.TabIndex = 8;
@@ -239,13 +243,22 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.button2);
+            this.groupBox6.Controls.Add(this.button1);
+            this.groupBox6.Location = new System.Drawing.Point(8, 182);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(317, 66);
+            this.groupBox6.TabIndex = 0;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Audio";
+            // 
             // TrayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 280);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(343, 283);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
@@ -266,6 +279,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.capturePeriodInSeconds)).EndInit();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,6 +307,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox6;
     }
 }
 

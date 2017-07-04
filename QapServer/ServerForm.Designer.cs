@@ -69,6 +69,7 @@
             this.Controls.Add(this.button1);
             this.Name = "ServerForm";
             this.Text = "Qap Server";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ServerForm_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

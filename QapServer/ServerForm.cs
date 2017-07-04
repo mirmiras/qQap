@@ -51,5 +51,15 @@ namespace QapServer
         {
             StartServer(int.Parse(portTextBox.Text));
         }
+
+        private void ServerForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (_listenSocket != null)
+            {
+                _listenSocket.Close();
+                _listenSocket = null;
+            }
+
+        }
     }
 }
