@@ -16,48 +16,66 @@ namespace QapTray
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private QapSettings _qapSettings;
         private readonly AudioRecorder _audioRecorder = new AudioRecorder();
+        private bool _hideInTrayGuard = false;
 
         public TrayForm()
         {
             InitializeComponent();
+            _qapSettings = QapSettings.Load();
+            toTrayCheckBox.Checked = _qapSettings.MinimizeToTray;
+            startInTray.Checked = _qapSettings.StartInTray;
+            capturePeriodInSeconds.Value = _qapSettings.CapturePeriod;
+            captureActiveWindowCheckBox.Checked = _qapSettings.CaptureActiveWindow;
+            UpdateModeStatus(captureActiveWindowCheckBox.Checked);
+            UpdateFileStatus();
+            HideInTray(startInTray.Checked, true);
         }
 
         private void TrayForm_Resize(object sender, System.EventArgs e)
         {
             if (!toTrayCheckBox.Checked) return;
-            if (FormWindowState.Minimized == WindowState)
+            HideInTray(true, false);
+        }
+
+        private void HideInTray(bool hide, bool force)
+        {
+            if (_hideInTrayGuard) return;
+            _hideInTrayGuard = true;
+            if (hide)
             {
-                Hide();
-                notifyIcon.Visible = true;
-                notifyIcon.ShowBalloonTip(5);
+                if (force)
+                    WindowState = FormWindowState.Minimized;
+                if (WindowState == FormWindowState.Minimized)
+                {
+                    ShowInTaskbar = false;
+                    Hide();
+                    notifyIcon.Visible = true;
+                    notifyIcon.ShowBalloonTip(5);
+                }
             }
+            else
+            {
+                notifyIcon.Visible = false;
+                ShowInTaskbar = true;
+                Show();
+                WindowState = FormWindowState.Normal;
+            }
+            _hideInTrayGuard = false;
         }
 
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            notifyIcon.Visible = false;
-            Show();
-            WindowState = FormWindowState.Normal;
-
+            HideInTray(false, false);
         }
 
         private void TrayForm_Load(object sender, System.EventArgs e)
         {
-            _qapSettings = QapSettings.Load();
-            toTrayCheckBox.Checked = _qapSettings.MinimizeToTray;
-            startMinimizedCheckBox.Checked = _qapSettings.StartMinimized;
-            capturePeriodInSeconds.Value = _qapSettings.CapturePeriod;
-            captureActiveWindowCheckBox.Checked = _qapSettings.CaptureActiveWindow;
-            UpdateModeStatus(captureActiveWindowCheckBox.Checked);
-            UpdateFileStatus();
-            if (startMinimizedCheckBox.Checked)
-                WindowState = FormWindowState.Minimized;
         }
 
         private void TrayForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             _qapSettings.MinimizeToTray = toTrayCheckBox.Checked;
-            _qapSettings.StartMinimized = startMinimizedCheckBox.Checked;
+            _qapSettings.StartInTray = startInTray.Checked;
             _qapSettings.CapturePeriod = (int)capturePeriodInSeconds.Value;
             _qapSettings.CaptureActiveWindow = captureActiveWindowCheckBox.Checked;
             QapSettings.Save(_qapSettings);
@@ -162,6 +180,5 @@ namespace QapTray
         {
             _audioRecorder.Stop();
         }
-
     }
 }

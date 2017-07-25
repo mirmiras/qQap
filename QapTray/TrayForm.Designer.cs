@@ -33,7 +33,7 @@
             this.captureButton = new System.Windows.Forms.Button();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.toTrayCheckBox = new System.Windows.Forms.CheckBox();
-            this.startMinimizedCheckBox = new System.Windows.Forms.CheckBox();
+            this.startInTray = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.captureActiveWindowCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -47,9 +47,9 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -89,21 +89,21 @@
             this.toTrayCheckBox.Text = "Minimize To Tray";
             this.toTrayCheckBox.UseVisualStyleBackColor = true;
             // 
-            // startMinimizedCheckBox
+            // startInTray
             // 
-            this.startMinimizedCheckBox.AutoSize = true;
-            this.startMinimizedCheckBox.Location = new System.Drawing.Point(14, 62);
-            this.startMinimizedCheckBox.Name = "startMinimizedCheckBox";
-            this.startMinimizedCheckBox.Size = new System.Drawing.Size(96, 17);
-            this.startMinimizedCheckBox.TabIndex = 2;
-            this.startMinimizedCheckBox.Text = "Start minimized";
-            this.startMinimizedCheckBox.UseVisualStyleBackColor = true;
+            this.startInTray.AutoSize = true;
+            this.startInTray.Location = new System.Drawing.Point(14, 62);
+            this.startInTray.Name = "startInTray";
+            this.startInTray.Size = new System.Drawing.Size(79, 17);
+            this.startInTray.TabIndex = 2;
+            this.startInTray.Text = "Start in tray";
+            this.startInTray.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.toTrayCheckBox);
             this.groupBox1.Controls.Add(this.captureActiveWindowCheckBox);
-            this.groupBox1.Controls.Add(this.startMinimizedCheckBox);
+            this.groupBox1.Controls.Add(this.startInTray);
             this.groupBox1.Location = new System.Drawing.Point(159, 18);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(171, 85);
@@ -223,15 +223,16 @@
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             // 
-            // button1
+            // groupBox6
             // 
-            this.button1.Location = new System.Drawing.Point(30, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Audio Rec Start";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.groupBox6.Controls.Add(this.button2);
+            this.groupBox6.Controls.Add(this.button1);
+            this.groupBox6.Location = new System.Drawing.Point(8, 182);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(317, 66);
+            this.groupBox6.TabIndex = 0;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Audio";
             // 
             // button2
             // 
@@ -243,16 +244,15 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // groupBox6
+            // button1
             // 
-            this.groupBox6.Controls.Add(this.button2);
-            this.groupBox6.Controls.Add(this.button1);
-            this.groupBox6.Location = new System.Drawing.Point(8, 182);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(317, 66);
-            this.groupBox6.TabIndex = 0;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Audio";
+            this.button1.Location = new System.Drawing.Point(30, 28);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Audio Rec Start";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // TrayForm
             // 
@@ -291,7 +291,7 @@
         private System.Windows.Forms.Button captureButton;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.CheckBox toTrayCheckBox;
-        private System.Windows.Forms.CheckBox startMinimizedCheckBox;
+        private System.Windows.Forms.CheckBox startInTray;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
